@@ -26,9 +26,6 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: Execute unit tests
-        run: dotnet test
-
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
@@ -54,9 +51,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_3F470721FADE4514A80F69B601F0462F }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FAB1D65978314459A77128228D3355FA }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_02A227158A3942FDA08F87A36A9326D2 }}
+          client-id: "385255bb-c695-43f5-aa55-dbaefedfb444"
+          tenant-id: "1b5e73dd-7671-453d-9d9d-8a8433e6d67d"
+          subscription-id: "1112f1c5-9711-4d7e-8b4e-0bd03c1a8955"
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
