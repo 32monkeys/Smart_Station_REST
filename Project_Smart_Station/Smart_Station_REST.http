@@ -1,6 +1,2 @@
-@Project_Smart_Station_HostAddress = http://localhost:5143
+@Smart_Station_REST_HostAddress = http://localhost:5143
 
-GET {{Project_Smart_Station_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
