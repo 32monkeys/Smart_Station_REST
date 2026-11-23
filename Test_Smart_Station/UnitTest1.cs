@@ -1,11 +1,23 @@
-﻿namespace Test_Smart_Station
+﻿using Smart_Station_REST.Models;
+using Smart_Station_REST.Repositories;
+
+namespace Test_Smart_Station
 {
-    public class UnitTest1
+    public class JourneyRepositoryTest
     {
         [Fact]
-        public void Test1()
+        public void AddJourney_Should_Add_Journey_To_Repository()
         {
+            // Arrange
+            var journeyRepository = new JourneyRepository();
+            var journey = new Journey { Id = 1, Destination = "There" };
 
+            // Act
+            journeyRepository.Add(journey);
+
+            // Assert
+            bool journeyExists = journeyRepository.GetAll().Contains(journey);
+            Assert.True(journeyExists);
         }
     }
 }

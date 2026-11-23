@@ -9,6 +9,9 @@
         {
             Destination = destination;
         }
+        public Journey()
+        {
+        }
 
         public override string ToString()
         {

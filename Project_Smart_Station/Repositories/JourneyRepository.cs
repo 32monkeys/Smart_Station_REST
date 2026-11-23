@@ -4,9 +4,12 @@ namespace Smart_Station_REST.Repositories
 {
     public class JourneyRepository : IRepository<Journey>
     {
+        private readonly List<Journey> _journeys = new List<Journey>();
+
         public Journey Add(Journey obj)
         {
-            throw new NotImplementedException();
+            _journeys.Add(obj);
+            return obj;
         }
 
         public Journey Delete(int id)
@@ -16,7 +19,7 @@ namespace Smart_Station_REST.Repositories
 
         public IEnumerable<Journey> GetAll()
         {
-            throw new NotImplementedException();
+            return _journeys.ToList();
         }
 
         public Journey GetById(int id)
