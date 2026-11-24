@@ -21,6 +21,7 @@ namespace Smart_Station_REST.Controllers
 
         // GET: api/<JourneysController>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -28,6 +29,7 @@ namespace Smart_Station_REST.Controllers
 
         // GET api/<JourneysController>/5
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public string Get(int id)
         {
             return "value";
@@ -35,6 +37,7 @@ namespace Smart_Station_REST.Controllers
 
         // POST api/<JourneysController>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public ActionResult Post([FromBody] Journey value)
         {
             try
@@ -50,12 +53,15 @@ namespace Smart_Station_REST.Controllers
 
         // PUT api/<JourneysController>/5
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE api/<JourneysController>/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public void Delete(int id)
         {
         }
