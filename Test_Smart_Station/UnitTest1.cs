@@ -10,7 +10,7 @@ namespace Test_Smart_Station
         {
             // Arrange
             var journeyRepository = new JourneyRepository();
-            var journey = new Journey { Id = 1, Destination = "There" };
+            var journey = new Journey { Id = 1, StartLocation = "Here", Destination = "There" };
 
             // Act
             journeyRepository.Add(journey);

@@ -3,10 +3,12 @@
     public class Journey
     {
         public int Id { get; set; }
+        public string StartLocation { get; set; }
         public string Destination { get; set; }
 
-        public Journey(string destination)
+        public Journey(string startLocation, string destination)
         {
+            StartLocation = startLocation;
             Destination = destination;
         }
         public Journey()
@@ -15,7 +17,7 @@
 
         public override string ToString()
         {
-            return $"Destination: {Destination}";
+            return $"Start: {StartLocation}, Destination: {Destination}";
         }
     }
 }
