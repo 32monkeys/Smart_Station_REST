@@ -5,6 +5,9 @@
         public int Id { get; set; }
         public string StartLocation { get; set; }
         public string Destination { get; set; }
+        public DateTimeOffset ArrivalTime { get; set; }
+        public int PrepTime { get; set; }
+        public int ReplanningTime { get; set; }
 
         public Journey(string startLocation, string destination)
         {

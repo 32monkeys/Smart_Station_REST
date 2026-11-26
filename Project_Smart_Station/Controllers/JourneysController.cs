@@ -38,12 +38,13 @@ namespace Smart_Station_REST.Controllers
         // POST api/<JourneysController>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public ActionResult Post([FromBody] Journey value)
+        public ActionResult Post([FromBody] APIJourneyInput value)
         {
             try
             {
-                _journeyRepository.Add(value);
-                return Created($"/api/journeys/{value.Id}", value);
+                Journey resultingJourney = new Journey() { Id = 0, StartLocation = value.StartLocation, Destination = value.Destination, PrepTime = value.PrepTime, ReplanningTime = value.ReplanningTime, ArrivalTime = ParseTime(value.ArrivalTime, value.Timezone) };
+                _journeyRepository.Add(resultingJourney);
+                return Created($"/api/journeys/{resultingJourney.Id}", value);
             }
             catch (Exception e)
             {
@@ -64,6 +65,20 @@ namespace Smart_Station_REST.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public void Delete(int id)
         {
+        }
+
+        private DateTimeOffset ParseTime(string input, int timeZone)
+        {
+            string hoursString = input.Substring(0, 2);
+            string minutesString = input.Substring(3, 2);
+            int hours = Int32.Parse(hoursString);
+            int minutes = Int32.Parse(minutesString);
+
+            TimeSpan timeZoneDiff = TimeSpan.FromMinutes(timeZone);
+
+            DateTimeOffset output = new(1970, 1, 1, hours, minutes, 0, timeZoneDiff);
+
+            return output;
         }
     }
 }
