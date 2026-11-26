@@ -5,14 +5,14 @@
         public int Id { get; set; }
         public string StartLocation { get; set; }
         public string Destination { get; set; }
-        public string Weekday { get; set; } = string.Empty;
+        public DateTime Date { get; set; }
 
 
-        public Journey(string startLocation, string destination, string weekday = "")
+        public Journey(string startLocation, string destination, DateTime date)
         {
             StartLocation = startLocation;
             Destination = destination;
-            Weekday = weekday;
+            Date = date;
         }
         public Journey()
         {
@@ -20,7 +20,7 @@
 
         public override string ToString()
         {
-            return $"Start: {StartLocation}, Destination: {Destination}, Weekday: {Weekday}";
+            return $"Start: {StartLocation}, Destination: {Destination}, Date: {Date:yyyy-MM-dd}";
         }
     }
 }

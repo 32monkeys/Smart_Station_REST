@@ -24,7 +24,10 @@ namespace Smart_Station_REST.Repositories
 
         public Journey GetById(int id)
         {
-            throw new NotImplementedException();
+            var journey = _journeys.FirstOrDefault(j => j.Id == id);
+            if (journey == null)
+                throw new KeyNotFoundException($"Journey with id {id} not found");
+            return journey;
         }
 
         public Journey Update(Journey obj)

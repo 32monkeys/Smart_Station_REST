@@ -22,17 +22,26 @@ namespace Smart_Station_REST.Controllers
         // GET: api/<JourneysController>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IEnumerable<string> Get()
+        public IEnumerable<Journey> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _journeyRepository.GetAll();
         }
 
         // GET api/<JourneysController>/5
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public string Get(int id)
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<Journey> Get(int id)
         {
-            return "value";
+            try
+            {
+                var journey = _journeyRepository.GetById(id);
+                return Ok(journey);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
         }
 
         // POST api/<JourneysController>
